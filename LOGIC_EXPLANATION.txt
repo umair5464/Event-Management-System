@@ -1,37 +1,37 @@
-# Concise Logic Explanation: Event Management System (C++)
+Concise Logic Explanation: Event Management System (C++)
 
 This document provides a brief overview of the C++ Event Management System's logic.
 
-## 1. Overall Program Flow
+1. Overall Program Flow
 
-The program operates from the `main()` function, presenting a menu for **Admin Profile**, **User Profile**, or **Exit**. Navigation relies on `do-while` loops and `switch` statements. The global `Choice()` function handles validated integer input for menus.
+The program operates from the main() function, presenting a menu for Admin Profile, User Profile, or Exit. Navigation relies on do-while loops and switch statements. The global Choice() function handles validated integer input for menus.
 
-## 2. Class Design
+2. Class Design
 
-### a. `Event` Class (Base Class)
-* Manages all event data using `static` arrays (e.g., `organizer`, `event_name`, `date`) for up to 100 events, shared across the system.
-* `event_count` (static int) tracks the number of booked events.
-* Provides core methods for event data input (e.g., `Organizer_in()`, `Event_name_in()`) collectively called by `event_input()`, and output (e.g., `Organizer_out()`, `Event_name_out()`) collectively called by `event_output()`.
+a. Event Class (Base Class)
+Manages all event data using static arrays (e.g., organizer, event_name, date) for up to 100 events, shared across the system.
+event_count (static int) tracks the number of booked events.
+Provides core methods for event data input (e.g., Organizer_in(), Event_name_in()) collectively called by event_input(), and output (e.g., Organizer_out(), Event_name_out()) collectively called by event_output().
 
-### b. `Admin` Class (Inherits from `Event`)
-* Handles administrator functions.
-* `adminlogin()`: Verifies credentials against hardcoded `username` and `password` arrays.
-* Allows viewing of all events using the inherited `event_output()` method.
+b. Admin Class (Inherits from Event)
+Handles administrator functions.
+adminlogin(): Verifies credentials against hardcoded username and password arrays.
+Allows viewing of all events using the inherited event_output() method.
 
-### c. `User` Class (Inherits from `Event`)
-* Manages user-specific actions.
-* `user_signup()`: Registers new users, storing credentials in `username` and `password` arrays. `user_no` tracks registered users.
-* `user_login()`: Authenticates users against stored credentials.
-* `event_input()` (inherited): Used to book new events. The "Organizer Name" entered during booking is crucial as it's used to link the event to the user.
-* `view_booked_events()`: Displays events where the stored `Event::organizer` name matches the logged-in user's `username`.
+c. User Class (Inherits from Event)
+Manages user-specific actions.
+user_signup(): Registers new users, storing credentials in username and password arrays. user_no tracks registered users.
+user_login(): Authenticates users against stored credentials.
+event_input() (inherited): Used to book new events. The "Organizer Name" entered during booking is crucial as it's used to link the event to the user.
+view_booked_events(): Displays events where the stored Event::organizer name matches the logged-in user's username.
 
-## 3. Key Logic Points
+3. Key Logic Points
 
-* **Event-User Association:** Events are linked to users when the "Organizer Name" provided during event booking matches the user's username.
-* **Input Validation:** The `Choice()` function ensures users enter valid integer menu selections, handling incorrect input types.
+Event-User Association: Events are linked to users when the "Organizer Name" provided during event booking matches the user's username.
+Input Validation: The Choice() function ensures users enter valid integer menu selections, handling incorrect input types.
 
-## 4. Data Handling
+4. Data Handling
 
-* **In-Memory Storage:** All data (admin/user credentials, event details) is stored in arrays within the classes.
-* **No Persistence:** Data is **lost** when the program exits as there is no file saving/loading mechanism.
-* **Fixed Sizes:** Arrays have predefined limits (e.g., 100 events).
+In-Memory Storage: All data (admin/user credentials, event details) is stored in arrays within the classes.
+No Persistence: Data is lost when the program exits as there is no file saving/loading mechanism.
+Fixed Sizes: Arrays have predefined limits (e.g., 100 events).
