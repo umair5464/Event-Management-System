@@ -63,7 +63,7 @@ A simple command-line application built in C++ to manage event bookings. This sy
 
 ## 🤝 Contributing (Optional)
 
-Contributions, issues, and feature requests are welcome! Feel free to check issues page.
+Contributions, issues, and feature requests are welcome! Feel free to check issues page. This project is in group of 5.
 
 ## 📜 License (Optional)
 
